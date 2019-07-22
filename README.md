@@ -19,10 +19,15 @@ Json files.
 ## Data Cleaning Up Processing
 
 1. Convert Json to CSV using R with a code example as following:
+
 library(jsonlite)
+
 file_name <- 'yelp_academic_dataset_tip.json'
+
 tip<-jsonlite::stream_in(textConnection(readLines(file_name, n=1000000)),verbose=F)  # Adjust number of readLines with lenghth of each Json file.
+
 length(tip)
+
 write.csv(tip,"yelp_tip.csv",row.names = F)
 
 2. Upload CSV files onto S3 bucket.
