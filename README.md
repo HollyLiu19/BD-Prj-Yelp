@@ -16,6 +16,14 @@ Yelp provide data for .... There're four Json files involing business, user, tip
 4. Format
 Json files.
 
+## Methods and Tools
+R
+Python
+PySpark
+
+Why PySpark?
+
+
 ## Data Cleaning Up Processing
 
 1. Convert Json to CSV using R with a code example as following:
@@ -64,4 +72,17 @@ We try to predict rating for each business ? on Yelp by reasonalbe attributes in
 
 
 ## NLP
+
+
+
+## Conclusions
+
+
+
+## Challenges and Solutions
+1. Data transfering from Json to CSV
+2. Read in data with text columns in a neat format
+3. Upload data onto S3 bucket from local cost long time
+4. Code for model trainning and testing doesn't respond due to the large size of data
+....
 
