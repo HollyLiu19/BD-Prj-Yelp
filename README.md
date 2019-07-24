@@ -1,12 +1,21 @@
 # BD-Prj-Yelp
-Big data final project about Yelp data
+Big data final project about Yelp restaurant review.
 
 Group Member: Jiaqi Chen, Haoning Liu, Xiaolu Li, Mengqi Li
+
+## Abstract
+The objective is to apply the big data analytical concept and tools taught in Big data course to extract insightful analytics and help existing restaurant. We applied descriptive analysis, predictive analysis and sentiment analysis to this dataset.
+
+## Introduction
+Yelp is a local business directory and social networking reviews website. It enables customers to give companies ratings and reviews. Usually the review is brief text composed of a few lines with approximately 100 phrases. Often, a review defines different dimensions of a company and the user's experience with regard to those aspects.
+
+## Explanation for changing the dataset
+Originally, our group started from NYU Parking tickets. We conduct descriptive analysis of the dataset using Pyspark, S3 Hardoop. However, we didn't find an intereting aspect of this dataset to starting on modeling. Therefore, we decide to change the dataset. Currently, we are working onn Yelp restaurant review dataset.
 
 
 ## Data Introduction:
 1. Data Source: Kaggle (link: )
-
+These dataset contain a subset of Yelp’s businesses, reviews, and user data. It was originally put together for the Yelp Dataset Challenge
 2. Context
 Yelp provide data for .... There're four Json files involing business, user, tip, review and check-in.
 
@@ -71,7 +80,9 @@ We try to predict rating for each business ? on Yelp by reasonalbe attributes in
 
 
 
-## NLP
+## Sentiment Analysis
+1.Data preprocessing
+The majority of the reviews focuses on the positive sides -- intuitively, people tend to leave reviews when they feel great about their experience. Contradictory, the number of extremely negative reviews (1 star) also overwhelm the number of neutral reviews (2 or 3 stars).
 
 
 
