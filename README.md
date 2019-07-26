@@ -81,8 +81,34 @@ We try to predict rating for each business ? on Yelp by reasonalbe attributes in
 
 
 ## Sentiment Analysis
-1.Data preprocessing
-The majority of the reviews focuses on the positive sides -- intuitively, people tend to leave reviews when they feel great about their experience. Contradictory, the number of extremely negative reviews (1 star) also overwhelm the number of neutral reviews (2 or 3 stars).
+### Data preprocessing
+1. Target variable recoding: We relabeled the stars column so that any reviews with 4 stars or above will be 1, which means positive, anything else is deemed to be 0, which means negative reviews. 
+```# relabel target variable
+def convert_rate(rate):
+    rate = int(rate)
+    if rate >=4: return 1
+    else: return 0
+ ```       
+2. Then We begin to do text processings before tokenizing the text.
+   a. Remove punctuation
+   b. Remove stopwords
+   C. Make tokens
+   We leverage the methords in pyspark ml features.
+```from pyspark.ml.feature import *
+```
+3. Create trigrams whose frequency larger than 10
+   a. We use ```ngram``` to create trigrams. An n-gram is a contiguous sequence of n items from a given sample of text or speech. Trigrams means three words appear together.
+   b. We use MapReduce functions in python to identify the Trigrams with more than 10 times in the reviews.
+```ngrams = add_ngram.rdd.flatMap(lambda x: x[-1]).filter(lambda x: len(x.split())==n)
+```
+   c. We will replace the original text with trigrams and then tokenize them. 
+   d. We then create TF-IDF matrix to make preparation for the model
+  
+ ### Model 
+ 1. We split data into training and test set.
+ 2. We define hyper-parameters in SVM model: regParam and numIterations.
+ 3. Model evaluation: Since we know that a lot of data are labeled 1, it is an imbalanced dataset. So we chooss to use F1, a weighted average of precision and recall -- could evaluate the model. Herein, the model returns an F1 score of 88.48%
+
 
 
 
@@ -97,3 +123,6 @@ The majority of the reviews focuses on the positive sides -- intuitively, people
 4. Code for model trainning and testing doesn't respond due to the large size of data
 ....
 
+## Reference
+1. https://en.wikipedia.org/wiki/N-gram
+2. https://medium.com/quick-code/yelp-reviews-sentiment-prediction-via-pyspark-mongodb-aws-emr-8bf0e21f5a92
